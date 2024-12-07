@@ -1,0 +1,49 @@
+{
+  "hash": "28623ff4",
+  "configHash": "50453cde",
+  "lockfileHash": "e9e82c50",
+  "browserHash": "9e2695a0",
+  "optimized": {
+    "vue": {
+      "src": "../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "f8a86a31",
+      "needsInterop": false
+    },
+    "element-plus": {
+      "src": "../../node_modules/element-plus/es/index.mjs",
+      "file": "element-plus.js",
+      "fileHash": "1011a11d",
+      "needsInterop": false
+    },
+    "@element-plus/icons-vue": {
+      "src": "../../node_modules/@element-plus/icons-vue/dist/index.js",
+      "file": "@element-plus_icons-vue.js",
+      "fileHash": "503aa8f9",
+      "needsInterop": false
+    },
+    "pinia": {
+      "src": "../../node_modules/pinia/dist/pinia.mjs",
+      "file": "pinia.js",
+      "fileHash": "4b17ece2",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "src": "../../node_modules/vue-router/dist/vue-router.mjs",
+      "file": "vue-router.js",
+      "fileHash": "59c90573",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-TRKE3K6T": {
+      "file": "chunk-TRKE3K6T.js"
+    },
+    "chunk-AYVSL3LM": {
+      "file": "chunk-AYVSL3LM.js"
+    },
+    "chunk-LPAU6MA2": {
+      "file": "chunk-LPAU6MA2.js"
+    }
+  }
+}
