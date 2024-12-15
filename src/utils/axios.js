@@ -3,8 +3,10 @@ import router from '@/router'
 import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 
+const API_BASE_URL = import.meta.env.VITE_API_URL; // 从环境变量中加载
+
 const instance = axios.create({
-    baseURL: 'http://localhost:9999', // 你的 API 基础 URL
+    baseURL: `${API_BASE_URL}/api`, // 后端接口基础路径，统一添加 /api 前缀
     timeout: 10000, // 请求超时时间
     headers: {
         'Content-Type': 'application/json'

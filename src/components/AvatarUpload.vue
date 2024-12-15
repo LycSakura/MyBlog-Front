@@ -1,5 +1,6 @@
 <template>
-    <el-upload class="avatar-uploader" :data="uploadData" :show-file-list="false"
+    <el-upload class="avatar-uploader" :data="uploadData" :show-file-list="false" 
+        :auto-upload="false" 
         :before-upload="beforeAvatarUpload" :on-change="handleFileChange">
         <img v-if="avatarUrl" :src="avatarUrl" class="avatar" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>

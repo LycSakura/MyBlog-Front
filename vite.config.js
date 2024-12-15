@@ -9,5 +9,16 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
-  }
+  },
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://localhost:9999', // 后端服务的地址
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, ''), // 本地开发时移除 /api 前缀
+  //     },
+  //   },
+  // },
 })
+
+

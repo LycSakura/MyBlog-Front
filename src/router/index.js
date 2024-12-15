@@ -34,22 +34,47 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
 });
+
+// 添加带有参数的路径模式
+const publicPagePatterns = [
+    '/login',
+    '/register',
+    '/home',
+    '/articleDetail/:id', // 注意这里的 :id 是占位符
+];
+
+function matchesPublicPagePattern(path) {
+    return publicPagePatterns.some(pattern => {
+        if (pattern.includes(':')) {
+            const regexString = pattern.replace(/:(\w+)/g, '[\\w-]+');
+            const regex = new RegExp(`^${regexString}$`);
+            return regex.test(path);
+        }
+        return path === pattern;
+    });
+}
+
+// 添加一个函数来判断是否是后台管理页面
+function isDashboardPage(path) {
+    return path.startsWith('/dashboard');
+}
+
 // 添加路由导航守卫
-// router.beforeEach((to, from, next) => {
-//     const userStore = useUserStore();
-//     const isAuthenticated = !!userStore.token; // 检查是否有 token
+router.beforeEach((to, from, next) => {
+    const userStore = useUserStore();
+    console.log('Current token:', userStore.token); // 打印 token
+    const isAuthenticated = !!userStore.token; // 检查是否有 token
+    console.log('Is authenticated:', isAuthenticated); // 打印认证状态
 
-//     // 白名单：这些路径可以直接访问
-//     const publicPages = ['/login', '/register', '/home'];
-//     const isPublicPage = publicPages.includes(to.path);
+    const isPublicPage = matchesPublicPagePattern(to.path);
+    const isDashboard = isDashboardPage(to.path);
 
-//     if (!isAuthenticated && !isPublicPage) {
-//         // 未登录且访问受限页面时，重定向到登录页
-//         ElMessage.error('请先登录');
-//         next('/login');
-//     } else {
-//         next(); // 否则允许访问
-//     }
-// });
+    if (!isAuthenticated && (!isPublicPage || isDashboard)) {
+        ElMessage.error('请先登录');
+        next('/login');
+    } else {
+        next(); // 否则允许访问
+    }
+});
 
 export default router;
